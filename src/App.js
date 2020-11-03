@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-
+import Todo from './components/Todo/Todo';
+import TodoForm from './components/TodoForm/TodoForm'
 /*
 ? CRUD => Creating to-do items, 
 ?         Reading to-do items, 
@@ -58,38 +59,5 @@ const deleteTodo = index => {
     </div>
   ); 
 }
-
-function TodoForm({addTodo}){
-  const [value, setValue] = useState("");
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    if(!value) return;
-    addTodo(value);
-    setValue('');
-  }
-
-  return(
-    <form onSubmit = {handleSubmit}>
-      <input className='input' type='text' value={value} placeholder='create your own to do list...' onChange={e => setValue(e.target.value)}/>      
-      <input type="submit" value="Add To List" className='btn'/>  
-    </form>   
-  )
-}
-
-
-// * add the is-completed css class to todo text
-function Todo({todo, index, toggleTodo, deleteTodo }){
-  return(
-   <div className={`todo ${todo.isCompleted && 'is-completed'}`} >          
-   <div onClick={() => toggleTodo(index)}>
-      {todo.text}
-   </div>
-    <div>      
-      <button className='delete-btn' onClick={() => deleteTodo(index)}>X</button>
-    </div>  
-    </div>
-  );
-};
 
 export default App;
