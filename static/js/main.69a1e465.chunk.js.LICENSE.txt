@@ -1,0 +1,1 @@
+//! splice() => remove 1 element from todo index
